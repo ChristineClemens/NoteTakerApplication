@@ -16,10 +16,14 @@ app.use(express.urlencoded({extended:true}));
 //Specify a required path.
 var notesInput = require("./db/db.json");
 
+
+
 //Add a listener to the specified port.
 app.listen(PORT, function() {
     console.log(`App listening on PORT ${PORT}`);
 });
+
+
 
 //Restful API get request that returns notes.html.
 app.get("/notes", function(req, res) {
@@ -50,6 +54,8 @@ app.delete("api/notes/:id", function (req, res) {
     notesInput.splice(req.params.id -1, 1)
     saveEntry(res)
 });
+
+
 
 //Function that stringifies note data and writes it to the ./db/db.json database.
 function saveEntry(req, res) {
