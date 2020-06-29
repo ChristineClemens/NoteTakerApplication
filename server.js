@@ -13,6 +13,8 @@ app.use(express.json());
 app.use(express.static("public"));
 app.use(express.urlencoded({extended:true}));
 
+//Specify a required path.
+var notesInput = require("./db/db.json");
 
 //Add a listener to the specified port.
 app.listen(PORT, function() {
@@ -37,6 +39,7 @@ app.get("/api/notes", function(req, res) {
 
 //* POST `/api/notes` - Should receive a new note to save on the request body, add it to the `db.json` file, and then return the new note to the client.
 app.post("/api/notes", function(req, res) {
+
 
 });
 
