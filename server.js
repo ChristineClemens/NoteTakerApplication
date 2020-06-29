@@ -42,6 +42,12 @@ app.post("/api/notes", function(req, res) {
     notesInput.push(req.body)
 });
 
+//Function that stringifies note data and writes it to the ./db/db.json database.
+function saveEntry(req, res) {
+    fs.writeFileSync("./db/db.json", JSON.stringify(notesInput));
+    res.send(notesData);
+} 
+
 //Restful API delete request that separates saved notes to remove a single entry and its id.
 app.delete("api/notes/:id", function (req, res) {
     notesInput.splice(req.params.id -1, 1)
