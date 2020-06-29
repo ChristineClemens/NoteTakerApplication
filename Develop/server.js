@@ -6,7 +6,7 @@ const fs = require ("fs");
 const app = express();
 
 //Specify the PORT used for this application.
-const PORT = process.env.PORT || 8080;
+const PORT = 8080;
 
 //Setup to enable Express to handle data parsing.
 app.use(express.json());
@@ -32,7 +32,7 @@ app.get("/notes", function(req, res) {
 
 //Restful API get request that returns index.html.
 app.get("*", function(req, res) {
-    res.redirect("/")
+    res.redirect("/index.html")
 });
 
 //Restful API get request that cycles through iterable note entries and assigns each a unique id.
