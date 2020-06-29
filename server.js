@@ -34,21 +34,25 @@ app.get("*", function(req, res) {
 //Restful API get request that cycles through iterable note entries and assigns each a unique id.
 app.get("/api/notes", function(req, res) {
     for (const [id,note] of notesInput.entries()){
-    note.id = id + 1
-};
+        note.id = id + 1
+    }
+    saveEntry(res)
+});
 
 //Restful API post request that pushes a new note entry to the request body.
 app.post("/api/notes", function(req, res) {
     notesInput.push(req.body)
+    saveEntry(res)
 });
-
-//Function that stringifies note data and writes it to the ./db/db.json database.
-function saveEntry(req, res) {
-    fs.writeFileSync("./db/db.json", JSON.stringify(notesInput));
-    res.send(notesData);
-} 
 
 //Restful API delete request that separates saved notes to remove a single entry and its id.
 app.delete("api/notes/:id", function (req, res) {
     notesInput.splice(req.params.id -1, 1)
+    saveEntry(res)
 });
+
+//Function that stringifies note data and writes it to the ./db/db.json database.
+function saveEntry(req, res) {
+    fs.writeFileSync("./db/db.json", JSON.stringify(notesInput))
+    res.send(notesData)
+} 
