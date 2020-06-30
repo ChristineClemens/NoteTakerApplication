@@ -17,7 +17,7 @@ This application was designed with the intention of providing the user with a me
 - express (npm install express)
 
 ### Usage
-In order to use this application effectively, please download the "Develop" and "Assets" folders stored in the Git repository listed below. Be sure to have the node.js server environment installed as well as the fs and express modules that can be downloaded by entering “npm install <module>” in the command line. Enter "node server.js" in the command line to ensure that you are listening on the correct port, then type "localhost:8080" into the url search bar in your browser. You should be met with a functional application!
+In order to use this application effectively, please download the files stored in the Git repository listed below. Be sure to have the node.js server environment installed as well as the fs and express modules that can be downloaded by entering “npm install <module>” in the command line. Enter "node server.js" in the command line to ensure that you are listening on the correct port, then type "localhost:8080" into the url search bar in your browser. You should be met with a functional application!
 
 Alternatively, you may use the functional deployed application at: https://aqueous-dusk-95036.herokuapp.com/
 
