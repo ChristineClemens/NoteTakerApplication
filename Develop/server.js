@@ -16,7 +16,7 @@ app.use(express.urlencoded({extended:true}));
 //Specify a required path.
 var notesInput = require("./db/db.json");
 
-
+//------------------------------------------------------------------------------------------------------
 
 //Add a listener to the specified port.
 app.listen(PORT, function() {
@@ -26,13 +26,13 @@ app.listen(PORT, function() {
 
 
 //Restful API get request that returns notes.html.
-app.get("/notes", function(req, res) {
-    res.send("notes.html")
+app.get("/notes.html", function(req, res) {
+    res.sendFile("notes.html")
 });
 
 //Restful API get request that returns index.html.
-app.get("*", function(req, res) {
-    res.send("index.html")
+app.get("/index.html", function(req, res) {
+    res.sendFile("index.html")
 });
 
 //Restful API get request that cycles through iterable note entries and assigns each a unique id.
@@ -50,15 +50,15 @@ app.post("/api/notes", function(req, res) {
 });
 
 //Restful API delete request that separates saved notes to remove a single entry and its id.
-app.delete("api/notes/:id", function (req, res) {
-    notesInput.splice(req.params.id -1, 1)
+app.delete("/api/notes/:id", function (req, res) {
+    notesInput.splice(req.params.id - 1, 1)
     saveEntry(res)
 });
 
 
 
 //Function that stringifies note data and writes it to the ./db/db.json database.
-function saveEntry(req, res) {
+function saveEntry(res) {
     fs.writeFileSync("./db/db.json", JSON.stringify(notesInput))
-    res.send(notesData)
+    res.send(notesInput)
 } 
