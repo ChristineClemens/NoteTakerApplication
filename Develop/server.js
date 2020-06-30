@@ -27,12 +27,12 @@ app.listen(PORT, function() {
 
 //Restful API get request that returns notes.html.
 app.get("/notes", function(req, res) {
-    res.redirect("/notes.html")
+    res.send("notes.html")
 });
 
 //Restful API get request that returns index.html.
 app.get("*", function(req, res) {
-    res.redirect("/index.html")
+    res.send("index.html")
 });
 
 //Restful API get request that cycles through iterable note entries and assigns each a unique id.
