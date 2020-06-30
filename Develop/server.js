@@ -26,20 +26,21 @@ app.listen(PORT, function() {
 
 
 //Restful API get request that returns notes.html.
-app.get("/notes.html", function(req, res) {
-    res.sendFile("notes.html")
-});
-
-//Restful API get request that returns index.html.
-app.get("/index.html", function(req, res) {
-    res.sendFile("index.html")
+app.get("/notes", function(req, res) {
+    res.redirect("/notes.html")
 });
 
 //Restful API get request that cycles through iterable note entries and assigns each a unique id.
 app.get("/api/notes", function(req, res) {
-    for (const [id,note] of notesInput.entries()){
+    for (const [id,note] of notesInput.entries()) {
         note.id = id + 1
     }
+    saveEntry(res)
+});
+
+//Restful API delete request that separates saved notes to remove a single entry and its id.
+app.delete("/api/notes/:id", function (req, res) {
+    notesInput.splice(req.params.id - 1, 1)
     saveEntry(res)
 });
 
@@ -49,10 +50,9 @@ app.post("/api/notes", function(req, res) {
     saveEntry(res)
 });
 
-//Restful API delete request that separates saved notes to remove a single entry and its id.
-app.delete("/api/notes/:id", function (req, res) {
-    notesInput.splice(req.params.id - 1, 1)
-    saveEntry(res)
+//Restful API get request that returns index.html.
+app.get("*", function(req, res) {
+    res.redirect("/index.html")
 });
 
 
