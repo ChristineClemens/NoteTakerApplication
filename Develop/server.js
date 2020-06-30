@@ -20,7 +20,7 @@ var notesInput = require("./db/db.json");
 
 //Add a listener to the specified port.
 app.listen(PORT, function() {
-    console.log(`App listening on PORT ${PORT}`);
+    console.log("App listening on PORT " + PORT);
 });
 
 
